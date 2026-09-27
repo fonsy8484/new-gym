@@ -1,15 +1,254 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Mi Entrenamiento</title><style>
-:root{--bg:#080607;--surface:#151012;--line:rgba(255,255,255,.10);--text:#fff8f7;--muted:#b8a7aa;--red:#ee2929;--red-soft:#3c1217;--red-light:#ff817a;--done:#ff4a42;--gold:#ffbd59}*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{-webkit-tap-highlight-color:transparent}.app{width:min(100%,480px);min-height:100svh;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px calc(108px + env(safe-area-inset-bottom))}.screen{display:none}.screen.active{display:block;animation:appear .2s ease-out}@keyframes appear{from{opacity:.45;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}.topbar{display:flex;justify-content:space-between;align-items:center;min-height:40px;margin-bottom:18px}.brand{margin:0;color:#fff;font-size:13px;font-weight:900;letter-spacing:.13em}.profile,.back{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:#1a1113;color:#fff;font-weight:800}.back{border:0;cursor:pointer;font-size:24px;line-height:1}.hero{position:relative;min-height:318px;overflow:hidden;border:1px solid rgba(255,70,70,.26);border-radius:28px;background:radial-gradient(circle at 74% 24%,rgba(255,63,35,.75) 0 2%,transparent 18%),radial-gradient(circle at 74% 8%,rgba(232,26,26,.28),transparent 34%),linear-gradient(135deg,rgba(0,0,0,.2),rgba(0,0,0,.82)),linear-gradient(145deg,#2a0909 0%,#11090a 55%,#060607 100%);box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 -90px 100px rgba(0,0,0,.75)}.hero::before{content:"";position:absolute;width:208px;height:258px;right:20px;top:24px;border-radius:48% 48% 35% 35%;background:radial-gradient(ellipse at 54% 18%,#d98b6c 0 8%,transparent 9%),radial-gradient(ellipse at 48% 36%,#a53a28 0 18%,transparent 19%),radial-gradient(ellipse at 32% 49%,#742018 0 18%,transparent 19%),radial-gradient(ellipse at 67% 50%,#6e1c16 0 18%,transparent 19%),linear-gradient(90deg,transparent 0 17%,rgba(0,0,0,.78) 18% 25%,transparent 26% 72%,rgba(0,0,0,.77) 73% 80%,transparent 81%),linear-gradient(180deg,#2b0c0b 0%,#7a2119 42%,#13090a 100%);filter:contrast(1.35) saturate(1.25);transform:rotate(-6deg);opacity:.95;box-shadow:-22px 12px 55px rgba(0,0,0,.78)}.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(109deg,transparent 0 57%,rgba(245,40,30,.9) 57.4% 58.3%,transparent 58.7%),linear-gradient(165deg,rgba(255,255,255,.06),transparent 34%),linear-gradient(0deg,rgba(0,0,0,.92),transparent 55%);pointer-events:none}.hero-content{position:absolute;z-index:1;right:0;bottom:0;left:0;padding:24px}.eyebrow,.section-label{margin:0 0 8px;color:var(--red-light);font-size:11px;font-weight:900;letter-spacing:.16em}.hero-title{max-width:280px;margin:0;font-size:clamp(29px,8vw,39px);line-height:.96;letter-spacing:-.055em;text-transform:uppercase}.quote{min-height:52px;margin:22px 2px 18px;color:var(--muted);font-size:15px;line-height:1.35}.primary{width:100%;min-height:58px;border:0;border-radius:17px;background:linear-gradient(135deg,#ff4540,#ba1014);color:#fff;box-shadow:0 12px 26px rgba(215,18,20,.26),inset 0 1px rgba(255,255,255,.28);font-size:14px;font-weight:900;letter-spacing:.055em;cursor:pointer}.primary:active,.exercise-row:active,.today-card:active,.routine-card:active{transform:scale(.985)}.secondary{width:100%;min-height:48px;margin-top:4px;border:1px solid rgba(255,94,86,.38);border-radius:15px;background:#241214;color:#ff9c96;font-size:13px;font-weight:900;letter-spacing:.04em;cursor:pointer}.secondary.undo{border-color:#765154;background:#211517;color:#e6c3c1}.section-label{margin:31px 0 12px;color:#fff;font-size:12px;letter-spacing:.12em}.today-card{display:grid;grid-template-columns:1fr auto;gap:16px;min-height:142px;padding:19px;border:1px solid rgba(255,79,71,.25);border-radius:22px;background:linear-gradient(135deg,rgba(91,17,20,.86),rgba(26,15,17,.98) 65%);box-shadow:inset 4px 0 var(--red),0 16px 32px rgba(0,0,0,.23);cursor:pointer}.today-card.completed{border-color:rgba(255,188,89,.35);box-shadow:inset 4px 0 var(--gold),0 16px 32px rgba(0,0,0,.23)}.today-status{margin:0 0 9px;color:#ff7770;font-size:10px;font-weight:900;letter-spacing:.12em}.today-card.completed .today-status{color:#ffd18b}.today-card h2{margin:0;font-size:27px;line-height:1;letter-spacing:-.04em}.today-card p{margin:7px 0 0;color:var(--muted);font-size:14px}.today-meta{margin-top:15px!important;color:#f6d6d6!important;font-size:12px!important;font-weight:700}.arrow{align-self:center;width:41px;height:41px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.13);border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:23px}.workout-hero,.exercise-hero{padding:5px 2px 22px;border-bottom:1px solid var(--line)}.workout-title{margin:6px 0 8px;font-size:42px;line-height:.9;letter-spacing:-.065em}.workout-subtitle,.exercise-subtitle{margin:0;color:var(--muted);font-size:15px}.workout-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.chip{border:1px solid rgba(255,86,79,.33);border-radius:999px;background:var(--red-soft);color:#ffc3bf;padding:7px 10px;font-size:11px;font-weight:800;letter-spacing:.05em}.workout-progress{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}.progress-copy{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.04em}.progress-track{flex:1;height:7px;overflow:hidden;border-radius:99px;background:#241416}.progress-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#f02b2a,#ff6b59);transition:width .25s}.exercise-list,.routine-list{display:grid;gap:10px}.exercise-row{width:100%;display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#1a1113,#110d0e);color:var(--text);text-align:left;cursor:pointer;transition:.2s}.exercise-row.done{border-color:rgba(255,80,72,.45);background:linear-gradient(135deg,#451417,#1d1012)}.exercise-number,.exercise-done{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;color:#ff746c;font-size:13px;font-weight:900;letter-spacing:.04em}.exercise-done{background:var(--done);color:#fff;box-shadow:0 0 0 5px rgba(238,41,41,.12);font-size:17px}.exercise-name{display:block;font-size:16px;font-weight:850;letter-spacing:-.025em}.exercise-detail{display:block;margin-top:4px;color:var(--muted);font-size:12px}.exercise-completed{display:block;margin-top:6px;color:#ff8b84;font-size:10px;font-weight:900;letter-spacing:.09em}.exercise-arrow{color:#a99194;font-size:22px;padding-right:4px}.exercise-title{margin:7px 0 7px;font-size:32px;line-height:.98;letter-spacing:-.055em}.exercise-info{margin-top:17px;padding:13px;border:1px solid rgba(255,91,82,.22);border-radius:16px;background:linear-gradient(135deg,#351215,#170e10);color:#f7d9d7;font-size:13px;line-height:1.4}.set-labels,.set-row{display:grid;grid-template-columns:36px 1fr 1fr 58px 42px;gap:7px;align-items:center}.set-labels{margin:0 5px 7px;color:#8f7b7e;font-size:10px;font-weight:800;text-align:center}.set-row{margin-bottom:8px;padding:8px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}.set-row.done{border-color:rgba(255,84,77,.45);background:#291215}.set-number{display:grid;place-items:center;color:#fff;font-size:15px;font-weight:900}.set-row input{width:100%;min-width:0;border:1px solid #382326;border-radius:10px;outline:none;background:#0d090a;color:var(--text);padding:10px 7px;text-align:center;font-size:14px}.set-row input:focus{border-color:#df3835;box-shadow:0 0 0 3px rgba(238,41,41,.13)}.set-check{width:42px;height:42px;border:1px solid #3a282b;border-radius:12px;background:#201518;color:#fff;font-size:20px;font-weight:900;cursor:pointer}.set-check.done{border-color:var(--done);background:var(--done);box-shadow:0 0 0 4px rgba(238,41,41,.12)}.rest-card{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;padding:15px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}.rest-title{margin:0;font-size:14px;font-weight:900}.timer{margin:4px 0 0;color:var(--red-light);font-size:20px;font-weight:900;font-variant-numeric:tabular-nums}.rest-actions{display:flex;gap:7px}.rest-button{min-width:54px;min-height:38px;border:1px solid #4a2729;border-radius:11px;background:#2b1618;color:#ffb1ac;font-size:12px;font-weight:900;cursor:pointer}.rest-button.active{border-color:#ff5a53;background:#b7191c;color:#fff}.finish-wrap{margin-top:25px}.finish-help{margin:0 0 10px;color:var(--muted);font-size:12px;line-height:1.4;text-align:center}.summary{padding-top:34px;text-align:center}.summary-badge{width:90px;height:90px;display:grid;place-items:center;margin:0 auto 22px;border:1px solid rgba(255,190,91,.58);border-radius:50%;background:radial-gradient(circle,#4d2711,#1a1110 68%);box-shadow:0 0 0 10px rgba(255,189,89,.06),0 16px 44px rgba(0,0,0,.35);color:var(--gold);font-size:48px;font-weight:900}.summary h1,.routine-title{margin:0;font-size:32px;line-height:.98;letter-spacing:-.055em}.summary-sub,.routine-subtitle{margin:10px 0 0;color:var(--muted);font-size:14px}.summary-quote{margin:24px 4px 0;color:#d8c4c2;font-size:14px;line-height:1.45;font-style:italic}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:27px 0}.summary-stat{padding:17px 10px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#1b1113,#100b0c)}.summary-stat b{display:block;color:#fff;font-size:23px;letter-spacing:-.045em}.summary-stat span{display:block;margin-top:5px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.06em}.routine-plan{margin-top:20px;padding:16px;border:1px solid rgba(255,79,71,.25);border-radius:19px;background:linear-gradient(135deg,#391316,#160e10)}.routine-plan b{display:block;font-size:16px;letter-spacing:-.02em}.routine-plan span{display:block;margin-top:5px;color:#d6b7b6;font-size:12px}.plan-chip{display:inline-block;margin-top:12px;padding:6px 9px;border:1px solid rgba(255,101,94,.45);border-radius:999px;background:#551618;color:#ffb2ad;font-size:10px;font-weight:900;letter-spacing:.08em}.routine-card{width:100%;display:grid;grid-template-columns:1fr auto;gap:12px;padding:17px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(135deg,#1a1113,#110d0e);color:var(--text);text-align:left;cursor:pointer}.routine-card.active-routine{border-color:rgba(255,77,70,.45);background:linear-gradient(135deg,#481416,#1c1012);box-shadow:inset 4px 0 var(--red)}.routine-card h3{margin:0;font-size:20px;letter-spacing:-.04em}.routine-card p{margin:5px 0 0;color:var(--muted);font-size:13px}.routine-card small{display:block;margin-top:11px;color:#d9b5b4;font-size:11px;font-weight:800}.routine-card .arrow{width:35px;height:35px;font-size:20px}.routine-card.coming .arrow{color:#8f7273}.bottom-nav{position:fixed;z-index:10;right:0;bottom:0;left:0;display:flex;justify-content:center;padding:10px 18px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(8,6,7,.99),rgba(8,6,7,.87));backdrop-filter:blur(12px)}.bottom-nav-inner{width:min(100%,460px);display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;background:#151012;overflow:hidden}.nav-item{border:0;background:transparent;color:#998b8e;padding:13px 4px;font-size:11px;font-weight:800;cursor:pointer}.nav-item.active{color:#fff;background:linear-gradient(180deg,#431317,#291113);box-shadow:inset 0 2px var(--red)}@media(max-width:370px){.set-labels,.set-row{grid-template-columns:28px 1fr 1fr 50px 38px;gap:5px}.set-row{padding:6px}.set-row input{padding:9px 4px;font-size:13px}.set-check{width:38px;height:40px}.hero-title{font-size:30px}}
-</style></head><body><main class="app">
-<section class="screen active" id="home-screen"><header class="topbar"><p class="brand">MI ENTRENAMIENTO</p><div class="profile">F</div></header><section class="hero"><div class="hero-content"><p class="eyebrow">ENTRENA SIN EXCUSAS</p><h1 class="hero-title" id="motivational-title">HOY NO HAY EXCUSAS.</h1></div></section><p class="quote" id="motivational-quote">La disciplina empieza cuando termina la motivación.</p><button class="primary" id="start-workout">EMPEZAR ENTRENAMIENTO</button><p class="section-label">ENTRENAMIENTO DE HOY</p><article class="today-card" id="today-workout" role="button" tabindex="0"><div><p class="today-status" id="today-status">HOY · LISTO PARA EMPEZAR</p><h2>PULL A</h2><p>Espalda, bíceps y antebrazo</p><p class="today-meta" id="today-meta">8 ejercicios · ~60 min</p></div><span class="arrow" id="today-arrow">→</span></article></section>
-<section class="screen" id="routine-screen"><header class="topbar"><p class="brand">RUTINA</p><div class="profile">F</div></header><p class="eyebrow">TU PLAN ACTUAL</p><h1 class="routine-title">PUSH · PULL · LEGS</h1><p class="routine-subtitle">Seis entrenamientos para repetir y progresar.</p><div class="routine-plan"><b>PLAN PPL</b><span>Organiza la semana por empuje, tirón y piernas.</span><span class="plan-chip">PPL ACTIVO</span></div><p class="section-label">TUS ENTRENAMIENTOS</p><div class="routine-list" id="routine-list"></div></section>
-<section class="screen" id="workout-screen"><header class="topbar"><button class="back" id="back-home">←</button><p class="brand">ENTRENAMIENTO</p><div class="profile">F</div></header><section class="workout-hero"><p class="eyebrow">ENTRENAMIENTO DE HOY</p><h1 class="workout-title">PULL A</h1><p class="workout-subtitle">Espalda, bíceps y antebrazo</p><div class="workout-meta"><span class="chip">8 EJERCICIOS</span><span class="chip">~60 MIN</span><span class="chip">HOY</span></div><div class="workout-progress"><span class="progress-copy" id="workout-progress-text">0 DE 8 HECHOS</span><div class="progress-track"><div class="progress-fill" id="workout-progress-fill"></div></div></div></section><p class="section-label">EJERCICIOS DE HOY</p><div class="exercise-list" id="exercise-list"></div><p class="section-label">SESIÓN</p><button class="primary" id="finish-session">FINALIZAR SESIÓN</button></section>
-<section class="screen" id="exercise-screen"><header class="topbar"><button class="back" id="back-workout">←</button><p class="brand">EJERCICIO</p><div class="profile">F</div></header><section class="exercise-hero"><p class="eyebrow" id="exercise-counter">EJERCICIO 1 DE 8</p><h1 class="exercise-title" id="exercise-title">Jalón al pecho</h1><p class="exercise-subtitle" id="exercise-subtitle">Dorsal ancho · 3 series · 8–12 reps</p><div class="exercise-info" id="exercise-info">Mantén el pecho alto, lleva los codos hacia abajo y controla la subida.</div></section><p class="section-label">REGISTRA TUS SERIES</p><div class="set-labels"><span>Serie</span><span>Peso</span><span>Reps</span><span>RIR</span><span>✓</span></div><div id="set-list"></div><button class="secondary" id="add-set">＋ AÑADIR SERIE</button><div class="rest-card"><div><p class="rest-title">DESCANSO</p><p class="timer" id="timer">00:00</p></div><div class="rest-actions"><button class="rest-button" data-seconds="90">90 s</button><button class="rest-button" data-seconds="120">120 s</button></div></div><div class="finish-wrap"><p class="finish-help" id="finish-help">Al terminar, este ejercicio aparecerá marcado como hecho en Pull A.</p><button class="primary" id="finish-exercise">TERMINAR EJERCICIO ✓</button></div></section>
-<section class="screen" id="summary-screen"><header class="topbar"><button class="back" id="back-to-workout">←</button><p class="brand">RESUMEN</p><div class="profile">F</div></header><section class="summary"><div class="summary-badge">✓</div><p class="eyebrow">SESIÓN GUARDADA</p><h1>ENTRENAMIENTO<br>COMPLETADO</h1><p class="summary-sub">PULL A · Espalda, bíceps y antebrazo</p><div class="summary-grid"><div class="summary-stat"><b id="summary-exercises">0 / 8</b><span>EJERCICIOS</span></div><div class="summary-stat"><b id="summary-sets">0</b><span>SERIES HECHAS</span></div><div class="summary-stat"><b id="summary-volume">0 kg</b><span>VOLUMEN TOTAL</span></div><div class="summary-stat"><b id="summary-duration">0 min</b><span>DURACIÓN</span></div></div><p class="summary-quote">“No necesitas una sesión perfecta. Necesitas volver mañana.”</p><div class="finish-wrap"><button class="primary" id="save-home">GUARDAR Y VOLVER A INICIO</button></div></section></section>
-</main><nav class="bottom-nav"><div class="bottom-nav-inner"><button class="nav-item active" data-screen="home">Inicio</button><button class="nav-item" data-screen="routine">Rutina</button><button class="nav-item">Progreso</button><button class="nav-item">Perfil</button></div></nav>
-<script>
-const messages=[['HOY NO HAY EXCUSAS.','La disciplina empieza cuando termina la motivación.'],['HAZ QUE CUENTE.','No necesitas sentirte preparado. Necesitas empezar.'],['LA DISCIPLINA GANA.','Cada serie es un paso hacia tu mejor versión.'],['MÁS FUERTE QUE AYER.','El esfuerzo de hoy es el resultado de mañana.'],['ENTRENA. SUPERA. REPITE.','No negocies contigo mismo cuando toca entrenar.']];
-const exercises=[{name:'Jalón al pecho',detail:'Dorsal ancho · 3 series · 8–12 reps',tip:'Mantén el pecho alto, lleva los codos hacia abajo y controla la subida.'},{name:'Remo con barra',detail:'Espalda media · 3 series · 8–12 reps',tip:'Lleva la barra hacia el ombligo sin perder la posición de la espalda.'},{name:'Remo en polea baja',detail:'Espalda media · 3 series · 8–12 reps',tip:'Inicia cada repetición juntando las escápulas y evita balancearte.'},{name:'Face pull',detail:'Deltoide posterior · 3 series · 12–20 reps',tip:'Tira de la cuerda hacia la cara y abre los codos al final del recorrido.'},{name:'Curl de bíceps con barra',detail:'Bíceps · 3 series · 10–15 reps',tip:'Mantén los codos quietos y evita usar impulso con el tronco.'},{name:'Curl martillo',detail:'Braquial y antebrazo · 3 series · 10–15 reps',tip:'Usa agarre neutro y controla especialmente la bajada.'},{name:'Curl de muñeca',detail:'Flexores del antebrazo · 3 series · 12–20 reps',tip:'Apoya el antebrazo y mueve solo la muñeca de forma controlada.'},{name:'Curl inverso de muñeca',detail:'Extensores del antebrazo · 3 series · 12–20 reps',tip:'Usa poco peso y controla todo el rango de movimiento.'}];
-const routines=[{name:'PUSH A',muscles:'Pecho, hombro y tríceps',meta:'6 ejercicios · ~55 min'},{name:'PULL A',muscles:'Espalda, bíceps y antebrazo',meta:'8 ejercicios · ~60 min',active:true},{name:'LEGS A',muscles:'Cuádriceps, femoral y gemelos',meta:'6 ejercicios · ~60 min'},{name:'PUSH B',muscles:'Hombro, pecho y tríceps',meta:'5 ejercicios · ~50 min'},{name:'PULL B',muscles:'Espalda, bíceps y antebrazo',meta:'6 ejercicios · ~55 min'},{name:'LEGS B',muscles:'Glúteos, femoral y abdomen',meta:'6 ejercicios · ~55 min'}];
-const STORAGE='newGymPullAState',HISTORY='newGymSessionHistory',COMPLETE='newGymTodayComplete';let state=JSON.parse(localStorage.getItem(STORAGE)||'{}'),currentExercise=0,timerId=null,sessionStarted=null,lastSummary=null;function save(){localStorage.setItem(STORAGE,JSON.stringify(state))}function entry(index){if(!state[index])state[index]={done:false,sets:[{},{},{}]};return state[index]}function selectedMessage(){const item=messages[Math.floor(Math.random()*messages.length)];document.querySelector('#motivational-title').textContent=item[0];document.querySelector('#motivational-quote').textContent=item[1]}function showScreen(screen){['home','routine','workout','exercise','summary'].forEach(name=>document.querySelector('#'+name+'-screen').classList.toggle('active',screen===name));document.querySelectorAll('.nav-item').forEach(button=>button.classList.toggle('active',button.dataset.screen===screen));window.scrollTo({top:0,left:0,behavior:'instant'});if(screen==='home')renderHome();if(screen==='routine')renderRoutine();if(screen==='workout')renderWorkout();if(screen==='exercise')renderExercise();if(screen==='summary')renderSummary()}function doneCount(){return exercises.filter((_,index)=>entry(index).done).length}function ensureSession(){if(!sessionStarted)sessionStarted=Date.now()}function renderHome(){const completed=localStorage.getItem(COMPLETE)==='true';document.querySelector('#today-workout').classList.toggle('completed',completed);document.querySelector('#today-status').textContent=completed?'HOY · SESIÓN COMPLETADA ✓':'HOY · LISTO PARA EMPEZAR';document.querySelector('#today-meta').textContent=completed?'PULL A · COMPLETADO ✓':'8 ejercicios · ~60 min';document.querySelector('#today-arrow').textContent=completed?'✓':'→';document.querySelector('#start-workout').textContent=completed?'VER ENTRENAMIENTO DE HOY':'EMPEZAR ENTRENAMIENTO'}function renderRoutine(){document.querySelector('#routine-list').innerHTML=routines.map(routine=>`<button class="routine-card ${routine.active?'active-routine':'coming'}" data-routine="${routine.name}"><span><h3>${routine.name}</h3><p>${routine.muscles}</p><small>${routine.meta}${routine.active?'':' · Próximamente'}</small></span><span class="arrow">${routine.active?'→':'›'}</span></button>`).join('');document.querySelectorAll('[data-routine]').forEach(button=>button.addEventListener('click',()=>{if(button.dataset.routine==='PULL A'){ensureSession();showScreen('workout')}else alert(`${button.dataset.routine} será la próxima rutina que construiremos. Pull A ya está disponible.`)}))}function renderWorkout(){const done=doneCount();document.querySelector('#workout-progress-text').textContent=`${done} DE ${exercises.length} HECHOS`;document.querySelector('#workout-progress-fill').style.width=`${done/exercises.length*100}%`;document.querySelector('#exercise-list').innerHTML=exercises.map((exercise,index)=>{const item=entry(index);return `<button class="exercise-row ${item.done?'done':''}" data-exercise="${index}"><span class="${item.done?'exercise-done':'exercise-number'}">${item.done?'✓':String(index+1).padStart(2,'0')}</span><span><span class="exercise-name">${exercise.name}</span><span class="exercise-detail">${exercise.detail}</span>${item.done?'<span class="exercise-completed">✓ HECHO</span>':''}</span><span class="exercise-arrow">${item.done?'':'›'}</span></button>`}).join('');document.querySelectorAll('[data-exercise]').forEach(button=>button.addEventListener('click',()=>{ensureSession();currentExercise=Number(button.dataset.exercise);showScreen('exercise')}))}function renderExercise(){const exercise=exercises[currentExercise],item=entry(currentExercise),finished=item.done;document.querySelector('#exercise-counter').textContent=`EJERCICIO ${currentExercise+1} DE ${exercises.length}`;document.querySelector('#exercise-title').textContent=exercise.name;document.querySelector('#exercise-subtitle').textContent=exercise.detail;document.querySelector('#exercise-info').textContent=exercise.tip;const finish=document.querySelector('#finish-exercise');finish.textContent=finished?'DESMARCAR EJERCICIO':'TERMINAR EJERCICIO ✓';finish.classList.toggle('secondary',finished);finish.classList.toggle('undo',finished);finish.classList.toggle('primary',!finished);document.querySelector('#finish-help').textContent=finished?'Puedes marcarlo como pendiente otra vez. Tus series registradas se conservarán.':'Al terminar, este ejercicio aparecerá marcado como hecho en Pull A.';document.querySelector('#set-list').innerHTML=item.sets.map((set,index)=>`<div class="set-row ${set.done?'done':''}" data-set="${index}"><span class="set-number">${index+1}</span><input inputmode="decimal" data-field="weight" placeholder="kg" value="${set.weight||''}"><input inputmode="numeric" data-field="reps" placeholder="reps" value="${set.reps||''}"><input inputmode="numeric" data-field="rir" placeholder="RIR" value="${set.rir||''}"><button class="set-check ${set.done?'done':''}" data-check="${index}">${set.done?'✓':''}</button></div>`).join('');document.querySelectorAll('.set-row input').forEach(input=>input.addEventListener('input',event=>{const row=event.target.closest('.set-row');entry(currentExercise).sets[Number(row.dataset.set)][event.target.dataset.field]=event.target.value;save()}));document.querySelectorAll('[data-check]').forEach(button=>button.addEventListener('click',()=>{const set=entry(currentExercise).sets[Number(button.dataset.check)];set.done=!set.done;save();renderExercise()}))}function resetTimer(){clearInterval(timerId);timerId=null;document.querySelector('#timer').textContent='00:00';document.querySelectorAll('.rest-button').forEach(button=>button.classList.remove('active'))}function startTimer(seconds,button){clearInterval(timerId);let left=seconds;document.querySelectorAll('.rest-button').forEach(item=>item.classList.remove('active'));button.classList.add('active');const tick=()=>{document.querySelector('#timer').textContent=`${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;if(left<=0){clearInterval(timerId);timerId=null;button.classList.remove('active');navigator.vibrate&&navigator.vibrate([150,80,150]);return}left--};tick();timerId=setInterval(tick,1000)}function calculateSummary(){let series=0,volume=0;Object.values(state).forEach(item=>(item.sets||[]).forEach(set=>{if(set.done){series++;volume+=(Number(set.weight)||0)*(Number(set.reps)||0)}}));const minutes=sessionStarted?Math.max(1,Math.round((Date.now()-sessionStarted)/60000)):0;return{done:doneCount(),series,volume:Math.round(volume),minutes}}function renderSummary(){const s=lastSummary||calculateSummary();document.querySelector('#summary-exercises').textContent=`${s.done} / ${exercises.length}`;document.querySelector('#summary-sets').textContent=s.series;document.querySelector('#summary-volume').textContent=`${s.volume.toLocaleString('es-ES')} kg`;document.querySelector('#summary-duration').textContent=`${s.minutes} min`}function finishSession(){ensureSession();const pending=exercises.length-doneCount();if(pending&&!confirm(`Te quedan ${pending} ejercicio${pending===1?'':'s'} pendiente${pending===1?'':'s'}.\n\n¿Quieres finalizar la sesión de todos modos?`))return;lastSummary=calculateSummary();const history=JSON.parse(localStorage.getItem(HISTORY)||'[]');history.unshift({date:new Date().toISOString(),routine:'Pull A',...lastSummary});localStorage.setItem(HISTORY,JSON.stringify(history));localStorage.setItem(COMPLETE,'true');showScreen('summary')}selectedMessage();renderHome();document.querySelector('#start-workout').addEventListener('click',()=>{ensureSession();showScreen('workout')});document.querySelector('#today-workout').addEventListener('click',()=>{ensureSession();showScreen('workout')});document.querySelector('#back-home').addEventListener('click',()=>showScreen('home'));document.querySelector('#back-workout').addEventListener('click',()=>{resetTimer();showScreen('workout')});document.querySelector('#back-to-workout').addEventListener('click',()=>showScreen('workout'));document.querySelector('#finish-session').addEventListener('click',finishSession);document.querySelector('#add-set').addEventListener('click',()=>{entry(currentExercise).sets.push({});save();renderExercise()});document.querySelectorAll('.rest-button').forEach(button=>button.addEventListener('click',()=>startTimer(Number(button.dataset.seconds),button)));document.querySelector('#finish-exercise').addEventListener('click',()=>{const item=entry(currentExercise);if(item.done){if(!confirm('¿Quieres volver a marcar este ejercicio como pendiente?\n\nTus series registradas no se borrarán.'))return;item.done=false}else{item.done=true}save();resetTimer();showScreen('workout')});document.querySelector('#save-home').addEventListener('click',()=>{sessionStarted=null;showScreen('home')});document.querySelectorAll('[data-screen]').forEach(button=>button.addEventListener('click',()=>showScreen(button.dataset.screen)));
-</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gym Tracker PPL</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 16px; background: #0f172a; color: #e2e8f0; }
+    h1, h2 { margin: 0 0 12px; }
+    button { margin: 4px 4px 4px 0; padding: 8px 12px; border: none; border-radius: 6px; background: #2563eb; color: white; cursor: pointer; }
+    button:disabled { background: #475569; cursor: not-allowed; }
+    .card { background: #1e293b; border-radius: 8px; padding: 12px; margin: 12px 0; }
+    .exercise { background: #334155; border-radius: 6px; padding: 10px; margin: 8px 0; }
+    .set { display: grid; grid-template-columns: 40px 1fr 1fr 1fr auto auto; gap: 6px; align-items: center; margin: 6px 0; }
+    input { background: #0f172a; border: 1px solid #475569; color: #e2e8f0; border-radius: 4px; padding: 6px; }
+    .timer { font-size: 20px; font-weight: bold; color: #22c55e; }
+    .hidden { display: none; }
+    .summary { margin-top: 12px; font-size: 14px; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <h1>Gym Tracker PPL</h1>
+
+  <div id="home" class="card">
+    <h2>Inicio</h2>
+    <p id="nextWorkout">Próximo entrenamiento: calculando...</p>
+    <button id="startBtn">Comenzar entrenamiento</button>
+  </div>
+
+  <div id="routine" class="card hidden">
+    <h2 id="routineTitle">Rutina</h2>
+    <div id="exercises"></div>
+    <div class="summary" id="summary"></div>
+    <button id="finishBtn" style="margin-top:12px">Finalizar</button>
+    <button id="backBtn" style="margin-top:12px">Volver a Inicio</button>
+  </div>
+
+  <div id="timer" class="card hidden">
+    <h2>Descanso</h2>
+    <div class="timer" id="timerDisplay">00:00</div>
+    <button id="stopTimerBtn">Detener</button>
+  </div>
+
+  <script>
+    const ROUTINES = {
+      pushA: {
+        title: "Push A",
+        exercises: [
+          { name: "Press banca plano con barra", sets: 3 },
+          { name: "Press inclinado con mancuernas", sets: 3 },
+          { name: "Fondos en paralelas", sets: 3 },
+          { name: "Elevaciones laterales", sets: 3 },
+          { name: "Press francés", sets: 3 },
+          { name: "Extensiones de tríceps en polea", sets: 3 }
+        ]
+      },
+      pullA: {
+        title: "Pull A",
+        exercises: [
+          { name: "Dominadas", sets: 3 },
+          { name: "Remo con barra", sets: 3 },
+          { name: "Remo en polea baja", sets: 3 },
+          { name: "Face pull", sets: 3 },
+          { name: "Curl de bíceps con barra", sets: 3 },
+          { name: "Curl martillo", sets: 3 }
+        ]
+      },
+      legsA: {
+        title: "Legs A",
+        exercises: [
+          { name: "Sentadilla con barra", sets: 3 },
+          { name: "Prensa inclinada", sets: 3 },
+          { name: "Zancadas con mancuernas", sets: 3 },
+          { name: "Extensión de cuádriceps", sets: 3 },
+          { name: "Curl femoral tumbado", sets: 3 },
+          { name: "Gemelos de pie", sets: 4 }
+        ]
+      },
+      pushB: {
+        title: "Push B",
+        exercises: [
+          { name: "Press militar con barra", sets: 3 },
+          { name: "Press banca con mancuernas", sets: 3 },
+          { name: "Aperturas en polea o máquina", sets: 3 },
+          { name: "Elevaciones frontales", sets: 3 },
+          { name: "Press cerrado", sets: 3 },
+          { name: "Patada de tríceps", sets: 3 }
+        ]
+      },
+      pullB: {
+        title: "Pull B",
+        exercises: [
+          { name: "Peso muerto", sets: 3 },
+          { name: "Jalón al pecho", sets: 3 },
+          { name: "Remo con mancuerna", sets: 3 },
+          { name: "Pájaros", sets: 3 },
+          { name: "Curl predicador", sets: 3 },
+          { name: "Curl en polea", sets: 3 }
+        ]
+      },
+      legsB: {
+        title: "Legs B",
+        exercises: [
+          { name: "Peso muerto rumano", sets: 3 },
+          { name: "Hip thrust", sets: 3 },
+          { name: "Sentadilla búlgara", sets: 3 },
+          { name: "Curl femoral sentado", sets: 3 },
+          { name: "Gemelos sentado", sets: 4 },
+          { name: "Abductores en máquina", sets: 3 }
+        ]
+      }
+    };
+
+    const ORDER = ["pushA","pullA","legsA","pushB","pullB","legsB"];
+    let currentRoutine = null;
+    let timerInterval = null;
+
+    function loadState() {
+      const last = localStorage.getItem("lastRoutine");
+      const today = localStorage.getItem("todayDate");
+      const now = new Date().toDateString();
+      if (today !== now) {
+        let idx = last ? ORDER.indexOf(last) : -1;
+        idx = (idx + 1) % ORDER.length;
+        localStorage.setItem("todayDate", now);
+        localStorage.setItem("nextRoutine", ORDER[idx]);
+      }
+      return localStorage.getItem("nextRoutine") || "pushA";
+    }
+
+    function saveRoutine(key, data) {
+      localStorage.setItem("routine_"+key, JSON.stringify(data));
+    }
+
+    function loadRoutine(key) {
+      const d = localStorage.getItem("routine_"+key);
+      return d ? JSON.parse(d) : null;
+    }
+
+    function renderExercises(routineKey) {
+      const r = ROUTINES[routineKey];
+      let html = "";
+      const saved = loadRoutine(routineKey) || {exercises: r.exercises.map(e => ({name:e.name, sets:e.sets.map(()=>({weight:"",reps:"",rir:"",checked:false,resting:false}))}))};
+      saved.exercises.forEach((ex,ei) => {
+        html += `<div class="exercise"><strong>${ex.name}</strong>`;
+        ex.sets.forEach((s,si) => {
+          const chk = s.checked ? "checked" : "";
+          html += `<div class="set">
+            <span>#${si+1}</span>
+            <input type="number" placeholder="kg" value="${s.weight||""}" onchange="updateSet('${routineKey}',${ei},${si},'weight',this.value)">
+            <input type="number" placeholder="reps" value="${s.reps||""}" onchange="updateSet('${routineKey}',${ei},${si},'reps',this.value)">
+            <input type="number" placeholder="RIR" value="${s.rir||""}" onchange="updateSet('${routineKey}',${ei},${si},'rir',this.value)">
+            <button onclick="toggleCheck('${routineKey}',${ei},${si})" ${chk}>✓</button>
+            <button onclick="startRest('${routineKey}',${ei},${si})" ${s.resting?"disabled":""}>⏱</button>
+          </div>`;
+        });
+        html += `</div>`;
+      });
+      document.getElementById("exercises").innerHTML = html;
+      updateSummary(routineKey);
+    }
+
+    function updateSet(rk,ei,si,fld,val) {
+      const d = loadRoutine(rk);
+      d.exercises[ei].sets[si][fld] = fld==="checked"||fld==="resting" ? !!val : val;
+      saveRoutine(rk,d);
+      if(fld==="checked"||fld==="resting") renderExercises(rk);
+      updateSummary(rk);
+    }
+
+    function toggleCheck(rk,ei,si) {
+      const d = loadRoutine(rk);
+      d.exercises[ei].sets[si].checked = !d.exercises[ei].sets[si].checked;
+      saveRoutine(rk,d);
+      renderExercises(rk);
+    }
+
+    function startRest(rk,ei,si) {
+      const d = loadRoutine(rk);
+      d.exercises[ei].sets[si].resting = true;
+      saveRoutine(rk,d);
+      renderExercises(rk);
+      document.getElementById("timer").classList.remove("hidden");
+      let t = 0;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(()=>{
+        t++;
+        const m = String(Math.floor(t/60)).padStart(2,"0");
+        const s = String(t%60).padStart(2,"0");
+        document.getElementById("timerDisplay").textContent = `${m}:${s}`;
+      },1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      document.getElementById("timer").classList.add("hidden");
+      document.getElementById("timerDisplay").textContent = "00:00";
+      if(currentRoutine){
+        const d = loadRoutine(currentRoutine);
+        d.exercises.forEach(ex=>ex.sets.forEach(s=>s.resting=false));
+        saveRoutine(currentRoutine,d);
+        renderExercises(currentRoutine);
+      }
+    }
+
+    function updateSummary(rk) {
+      const d = loadRoutine(rk);
+      let total=0,done=0,w=0;
+      d.exercises.forEach(ex=>ex.sets.forEach(s=>{
+        total++;
+        if(s.checked){done++; if(s.weight) w+=parseFloat(s.weight)||0;}
+      }));
+      const vol = done ? (w/1000).toFixed(1)+" t" : "-";
+      document.getElementById("summary").textContent = `Series: ${done}/${total} | Volumen: ${vol}`;
+    }
+
+    document.getElementById("startBtn").onclick = ()=>{
+      const rk = loadState();
+      currentRoutine = rk;
+      document.getElementById("home").classList.add("hidden");
+      document.getElementById("routine").classList.remove("hidden");
+      document.getElementById("routineTitle").textContent = ROUTINES[rk].title;
+      renderExercises(rk);
+    };
+
+    document.getElementById("finishBtn").onclick = ()=>{
+      if(currentRoutine){
+        const idx = ORDER.indexOf(currentRoutine);
+        const next = ORDER[(idx+1)%ORDER.length];
+        localStorage.setItem("nextRoutine",next);
+        localStorage.setItem("lastRoutine",currentRoutine);
+      }
+      currentRoutine = null;
+      document.getElementById("routine").classList.add("hidden");
+      document.getElementById("home").classList.remove("hidden");
+      const nxt = loadState();
+      document.getElementById("nextWorkout").textContent = "Próximo entrenamiento: " + ROUTINES[nxt].title;
+    };
+
+    document.getElementById("backBtn").onclick = ()=>{
+      currentRoutine = null;
+      document.getElementById("routine").classList.add("hidden");
+      document.getElementById("home").classList.remove("hidden");
+      const nxt = loadState();
+      document.getElementById("nextWorkout").textContent = "Próximo entrenamiento: " + ROUTINES[nxt].title;
+    };
+
+    document.getElementById("stopTimerBtn").onclick = stopTimer;
+
+    // init
+    const nxt = loadState();
+    document.getElementById("nextWorkout").textContent = "Próximo entrenamiento: " + ROUTINES[nxt].title;
+  </script>
+</body>
+</html>
