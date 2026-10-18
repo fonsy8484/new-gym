@@ -1,0 +1,37 @@
+name: Conectar index al catálogo
+on:
+  push:
+    branches: [actualizacion-material-confirmado]
+    paths: [.github/workflows/conectar-catalogo.yml]
+permissions:
+  contents: write
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar actualización protegida del index
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          b=s.encode()
+          assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()=='6dc5484f63628bf451104c70ef28dc6efc31f463', 'El index ha cambiado: no se sobrescribe'
+          s=s[:s.rfind('<script>')]+s[s.rfind('</script>')+9:]
+          patches=[('</style>', '.bottom-nav-inner{grid-template-columns:repeat(5,1fr)}.nav-item{font-size:10px}[hidden]{display:none!important}.picture-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);padding:20px;overflow:auto}.picture-modal>div{max-width:700px;margin:auto}.picture-modal img{width:100%;max-height:70vh;object-fit:contain}</style>'), ('</main>', '<section class="screen" id="catalog-screen"><header class="topbar"><p class="brand">MÚSCULOS Y EJERCICIOS</p><div class="profile">F</div></header><h1 class="routine-title">CATÁLOGO</h1><p id="catalog-mode" class="routine-subtitle"></p><input class="cardio-input" id="catalog-search" type="search" placeholder="Buscar nombre, número o material"><select class="cardio-input" id="catalog-group"></select><button class="secondary" id="catalog-cancel" hidden>CANCELAR CAMBIO</button><div id="catalog-items"></div></section></main>'), ('<button class="nav-item" data-screen="progress">', '<button class="nav-item" data-screen="catalog">Músculos</button><button class="nav-item" data-screen="progress">'), ('<p class="section-label">REGISTRA TUS SERIES</p>', '<div class="cardio-card"><img id="exercise-photo" style="width:100%;max-height:480px;object-fit:contain" alt="Inicio y final del ejercicio"><p id="photo-pending" hidden>Imagen pendiente</p><button class="secondary" id="attach-photo">ASOCIAR FOTO CORRECTA</button></div><button class="secondary" id="replace-exercise">CAMBIAR ESTE EJERCICIO</button><p class="section-label">REGISTRA TUS SERIES</p>'), ('<button class="secondary" id="reset-progress"', '<div class="cardio-card"><h3>COPIA DE SEGURIDAD</h3><p>Registros y fotos importadas se guardan en este navegador. Exporta antes de cambiar de dispositivo.</p><button class="secondary" id="export-backup">EXPORTAR COPIA COMPLETA</button><button class="secondary" id="import-backup">IMPORTAR COPIA</button><button class="secondary" id="export-original">EXPORTAR DATOS ORIGINALES</button><button class="secondary" id="new-session">INICIAR NUEVA SESIÓN</button></div><button class="secondary" id="reset-progress"'), ('</body>', '<input id="photo-file" type="file" accept="image/png,image/jpeg,image/webp" hidden><input id="backup-file" type="file" accept="application/json,.json" hidden><div id="picture-modal" class="picture-modal" hidden><div><h3 id="picture-title"></h3><img id="picture-img" alt="Inicio y final del ejercicio"><p id="picture-pending" hidden>Imagen pendiente para este ejercicio.</p><button class="secondary" id="picture-attach">ASOCIAR FOTO</button><button class="secondary" id="picture-close">CERRAR</button></div></div><script src="catalogo.js"></script><script src="app-material.js"></script></body>')]
+          for old,new in patches:
+              assert old in s, 'No se encuentra un bloque esperado'
+              s=s.replace(old,new)
+          p.write_text(s,encoding='utf-8')
+          PY
+          node --check app-material.js
+          node -e "const fs=require('fs'),vm=require('vm');vm.runInNewContext(fs.readFileSync('catalogo.js','utf8')+';if(C.length!==120||new Set(C.map(e=>e.id)).size!==120)throw Error(\"Catálogo inválido\");');"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Conectar index al catálogo y actualizar aplicación'
+            git push origin HEAD:actualizacion-material-confirmado
+          fi
